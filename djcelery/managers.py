@@ -76,11 +76,11 @@ class ExtendedQuerySet(QuerySet):
 
 class ExtendedManager(models.Manager):
 
-    def get_query_set(self):
+    def get_queryset(self):
         return ExtendedQuerySet(self.model)
 
     def update_or_create(self, **kwargs):
-        return self.get_query_set().update_or_create(**kwargs)
+        return self.get_queryset().update_or_create(**kwargs)
 
     def connection_for_write(self):
         if connections:
