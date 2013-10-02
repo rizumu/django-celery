@@ -135,7 +135,7 @@ class Camera(Polaroid):
         else:
             transaction.commit()
 
-    @transaction.commit_manually
+    @transaction.set_autocommit
     def on_shutter(self, state, commit_every=100):
         if not state.event_count:
             transaction.commit()

@@ -186,7 +186,7 @@ class DatabaseScheduler(Scheduler):
         self._dirty.add(new_entry.name)
         return new_entry
 
-    @transaction.commit_manually
+    @transaction.set_autocommit
     def sync(self):
         info('Writing entries...')
         _tried = set()

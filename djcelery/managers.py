@@ -105,7 +105,7 @@ class ResultManager(ExtendedManager):
         """Get all expired task results."""
         return self.filter(date_done__lt=now() - maybe_timedelta(expires))
 
-    @transaction.commit_manually
+    @transaction.set_autocommit
     def delete_expired(self, expires):
         """Delete all expired taskset results."""
         meta = self.model._meta
